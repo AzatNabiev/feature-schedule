@@ -1,0 +1,31 @@
+### Регистрация нового пользователя
+
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+  "login": "TestDeveloper@gmail.com",
+  "name": "Azat",
+  "password": "qwerty007"
+}
+
+### Авторирзация manager чтобы дать grade новому пользователю
+
+POST http://localhost:8080/api/auth
+Content-Type: application/json
+
+{
+  "login": "test@gmail.com",
+  "password": "qwerty007"
+}
+
+### Даем грейд юзеру манагером.
+
+POST http://localhost:8080/api/grade/status
+X-access-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "userId": "2",
+  "grade": "DEVELOPER"
+}

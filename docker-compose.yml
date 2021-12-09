@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    image: wave-access
+    container_name: wave-access
+    build: ./
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/db
+      - SPRING_DATASOURCEE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=qwerty007
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=qwerty007
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=db

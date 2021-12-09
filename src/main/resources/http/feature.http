@@ -1,0 +1,37 @@
+### Создание экземпляра Feature.
+
+POST http://localhost:8080/api/feature
+X-access-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "featureName": "feature name",
+  "featureDescription": "feature description"
+}
+
+### Добавление экземпляра класса User в объект Feature.
+
+POST http://localhost:8080/api/feature/user
+X-access-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNTk3MzIwMH0.9_tZ2tyzqs9TnMtUq8S1AcL812FWtloubVNpCgmy3S6T3vDZUJPbidMH1tqhN5GPwxFLnWOciJtigWURD7SimQ
+Content-Type: application/json
+
+{
+  "featureId": "1",
+  "userId": "2"
+}
+
+### Получение экземпляра класса Feature по ID.
+
+GET http://localhost:8080/api/feature/all/features
+X-access-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNTk3MzIwMH0.9_tZ2tyzqs9TnMtUq8S1AcL812FWtloubVNpCgmy3S6T3vDZUJPbidMH1tqhN5GPwxFLnWOciJtigWURD7SimQ
+Content-Type: application/json
+
+### Попытка закрытия фичи
+
+POST http://localhost:8080/api/feature/1
+X-access-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNTk3MzIwMH0.9_tZ2tyzqs9TnMtUq8S1AcL812FWtloubVNpCgmy3S6T3vDZUJPbidMH1tqhN5GPwxFLnWOciJtigWURD7SimQ
+Content-Type: application/json
+
+###
+
+

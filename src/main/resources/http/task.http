@@ -1,0 +1,132 @@
+### Добавление Task в Feature.
+
+POST http://localhost:8080/api/task
+X-access-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNTk3MzIwMH0.9_tZ2tyzqs9TnMtUq8S1AcL812FWtloubVNpCgmy3S6T3vDZUJPbidMH1tqhN5GPwxFLnWOciJtigWURD7SimQ
+Content-Type: application/json
+
+{
+  "featureId": "1",
+  "taskName": "taskName",
+  "taskDescription": "taskDescription",
+  "toUserById": "2"
+}
+
+### Измененение состояния экземпляра Task из InProgress в Resolved с передачи тестеру.
+
+POST http://localhost:8080/api/task/solved/tester
+X-access-token: ### users token
+Content-Type: application/json
+
+{
+  "taskId": "1",
+  "taskName": "taskName",
+  "taskRole": "RESOLVED",
+  "toUserById": "3"
+}
+
+### Изменение состояния экземпляра Task из InProgress в Resolved без передачи тестеру.
+
+POST http://localhost:8080/api/task/solved
+X-access-token: ### users token
+Content-Type: application/json
+
+{
+  "taskId": "1",
+  "taskName": "taskName",
+  "taskRole": "RESOLVED"
+}
+
+### Получение всех открытых тасков юзера.
+
+GET http://localhost:8080/api/task/opened
+Content-Type: application/json
+
+{
+  "toUserById": "2"
+}
+
+### Получение тасков по айдишнику.
+
+GET http://localhost:8080/api/task/1
+X-access-token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNTgwMDQwMH0.rbvegQmO8M_6qlgBcFm8yyqhiWnvLtgel8za5zH_yjfvK78v-Lyi2WEsc3HvUHnhyM0e4jRYK4Jpw-B1NCUXEw
+Content-Type: application/json
+
+### Проверка функционала тестера при багах.
+
+POST http://localhost:8080/api/task/1
+Content-Type: application/json
+
+{
+  "bugName": "test bug",
+  "description": "test description",
+  "status": "REJECTED"
+}
+
+### Проверка функционала тестера без багов
+
+POST http://localhost:8080/api/task/1
+Content-Type: application/json
+
+{
+  "bugName": "test bug",
+  "description": "test description",
+  "status": "ACCEPTED"
+}
+
+### Получение тасков по имени, статусу и юзеру.
+GET http://localhost:8080/api/task/param
+X-Access-Token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "taskState" : "OPEN"
+}
+
+###
+
+GET http://localhost:8080/api/task/param
+X-Access-Token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "toUserById" : "2"
+}
+
+###
+GET http://localhost:8080/api/task/param
+X-Access-Token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "taskName" : "taskName"
+}
+
+###
+GET http://localhost:8080/api/task/param
+X-Access-Token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "taskName" : "taskName",
+  "toUserById" : "2",
+  "taskState" : "OPEN"
+}
+###
+GET http://localhost:8080/api/task/param
+X-Access-Token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "taskName" : "taskName",
+  "toUserById" : "2"
+}
+
+###
+GET http://localhost:8080/api/task/param
+X-Access-Token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmNvbSIsImV4cCI6MTYzNjQ5MTYwMH0.vS4RnBo4Se0AsCm_j9Z_YsNEIFhw2tgOEybgLHnILhtYSSCmlsdTjJ9M7CZNGbF-DB__gU3VI9STjzZrkgdQ9w
+Content-Type: application/json
+
+{
+  "taskName" : "taskName",
+  "taskState" : "OPEN"
+}
