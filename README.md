@@ -1,18 +1,18 @@
-1) В проекте есть пользователи с разными ролями -- Manager, Developer, Tester.
-2) В проекте существует несколько Feature, каждая из которых разбита на подзадачи (Task).
-3) Каждая сущность имеет свой статус -- Open, In Progress, Resolved, Completed.
-4) Процесс разработки проекта выглядит следущим образом:
-    - Manager создаёт Features, Tasks, назначает их на Developer.
-    - Developer выполняет задачу и переводит её на Tester в статусе Resolved.
-    - Tester проверяет задачу, и, если она выполнена, закрывает её. Если не выполнена, создает Bug и переводит Task в In 
-         Progress. Для возврата Task в In Progress обязательно создать Bug.
-    - Если все Task в Feature выполнены, Manager может закрыть Feature.
-Задачи должны быть автоматически переведены на нужного исполнителя, если он известен (например, когда Tester возвращает Task в In Progress).
-по технологиям - Spring boot, Hibernate, Spring JPA, Spring Security, Flyway, PostgreSql
+1) The project has users with different roles - Manager, Developer, Tester.
+2) The project has several Features, each of which is broken down into subtasks (Tasks).
+3) Each entity has its own status - Open, In Progress, Resolved, Completed.
+4) The project development process looks as follows:
+- The Manager creates Features and Tasks, assigns them to the Developer.
+- The Developer completes the Task and transitions it to the Tester with a status of Resolved.
+- The Tester checks the Task, and if it's completed, closes it. If it's not completed, creates a Bug and transitions the Task to In Progress. To transition the Task to In Progress, it's mandatory to create a Bug.
+- If all Tasks in the Feature are completed, the Manager can close the Feature.
 
-Создание таблиц, заполнение их тестовыми данными - должно быть в автоматическом режиме ( через миграции)
-Дальше необходимо добавить ендпоинт, чтобы можно было искать таску по пользователю (если заполнено), имени(если заполнено), статусу( если заполнено). Поиск должен быть оптимальным
-Все сервисы должны быть покрыты юнит тестами 
-Необходимо попробовать два подхода
-1) Использовать какую-нибудь мок либу. Чтобы с реальной базой не общаться
-2) Заюзать testContainers. т.е. ставишь себе докер, подключаешь либу. И каждый раз когда у тебя будут запускаться тесты - будет разварачиваться отдельный докер контейнер с постгресом и новой бд
+Tasks should be automatically assigned to the appropriate performer if known (e.g., when the Tester returns the Task to In Progress).
+Regarding technologies, the project uses Spring Boot, Hibernate, Spring JPA, Spring Security, Flyway, and PostgreSQL.
+The creation of tables and their population with test data should be done automatically (through migrations).
+Next, an endpoint needs to be added to search for a Task by user (if specified), name (if specified), and status (if specified). The search should be optimal.
+All services should be covered by unit tests.
+Two approaches should be tried:
+
+Use some mock library to avoid communicating with a real database.
+Use testContainers. In other words, install Docker, connect the library, and every time tests are run, a separate Docker container with PostgreSQL and a new database will be deployed.
